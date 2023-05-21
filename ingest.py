@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 import glob
-from typing import List
+from typing import Any, List
 from dotenv import load_dotenv
 from multiprocessing import Pool
 from tqdm import tqdm
@@ -62,7 +62,7 @@ class MyElmLoader(UnstructuredEmailLoader):
 
 
 # Map file extensions to document loaders and their arguments
-LOADER_MAPPING = {
+LOADER_MAPPING: dict[str, tuple[Any, dict]] = {
     ".csv": (CSVLoader, {}),
     # ".docx": (Docx2txtLoader, {}),
     ".doc": (UnstructuredWordDocumentLoader, {}),
